@@ -1,5 +1,8 @@
 body {
     font-family: Arial, sans-serif;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(207,207,207,1) 12%, rgba(135,150,143,1) 100%, rgba(0,212,255,1) 100%); background: rgb(53,52,60);
+background: linear-gradient(90deg, rgba(53,52,60,1) 0%, rgba(207,207,207,1) 55%, rgba(205,205,205,1) 65%, rgba(135,150,143,1) 100%, rgba(0,212,255,1) 100%); 
 }
 
 /* index.html */
@@ -70,13 +73,31 @@ footer {
 aside {
     display: grid;
     grid-template-rows: auto auto auto auto auto auto auto;
-    width: 100%;
+    width: 90%;
+    height: 99%;
+    justify-content: center;
 }
+    .AsideItem {
+        border: 1px solid black;
+        margin: 3px;
+        background-color: rgb(189, 189, 189);
+        height: 19%;
+        text-align: center;
+        display: grid;
+        grid-template-columns: auto;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 3px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .AsideItem:hover {
+        background-color: rgb(54, 147, 175);
+    }
 
 
-
-
-/* firmy.html */
 
 
 

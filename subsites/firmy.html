@@ -9,42 +9,36 @@
 <body>
     <div class="container">
         <article>
-            <div>
-                <label for="AddFirma">Dodawanie Nowej Firmy</label>
-                <input type="button" value="Add" id="AddFirma">
+            <div class="AsideItem" id="AddFirma" onclick="choose(1)">
+                <p>Dodawanie Nowej Firmy</p>
             </div>
             
-            <div>
-                <label for="ListFirma">Wyświetlanie Firm</label>
-                <input type="button" value="List" id="ListFirma">
+            <div class="AsideItem" id="ListFirma" onclick="choose(2)">
+                <p>Wyświetlanie Firm</p>
             </div>
             
-            <div>
-                <label for="ListSpecificFirma">Wyświetlenie specyficznej Fimry</label>
-                <input type="button" value="List Specific" id="ListSpecificFirma">
+            <div class="AsideItem" id="ListSpecificFirma" onclick="choose(3)">
+                <p>Wyświetlenie specyficznej Fimry</p>
             </div>
             
-           <div>
-                <label for="ModifyFirma">Edytowanie Firm</label>
-                <input type="button" value="Modify" id="ModifyFirma">
+           <div class="AsideItem" id="ModifyFirma" onclick="choose(4)">
+                <p>Edytowanie Firm</p>
            </div>
 
-            
-           <div>
-                <label for="RestoreFirma">Przywracanie Firm</label>
-                <input type="button" value="Restore" id="RestoreFirma">
+           <div class="AsideItem" id="RestoreFirma" onclick="choose(5)">
+                <p>Przywracanie Firm</p>
            </div>
             
-            <div>
-                <label for="DeleteFimra">Usuwanie Firm</label>
-                <input type="button" value="Delete" id="DeleteFimra">
+            <div class="AsideItem" id="DeleteFimra" onclick="choose(6)">
+                <p>Usuwanie Firm</p>
             </div>
             
-            <a href="../index.html">Powrót</a>
+            <a href="../index.html" class="AsideItem">Powrót</a>
         </article>
         <article id="ContainerFirma">
-            test
+            
         </article>
     </div>
+    <script src="../scripts/firmy.js"></script>
 </body>
 </html>
