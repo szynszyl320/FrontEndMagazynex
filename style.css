@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* index.html */
 #container {
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -20,6 +21,7 @@ nav {
         text-align: center;
         color: black;
         text-decoration: none;
+        margin: 5px;
     }
     nav a:hover {
         background-color: rgb(80, 48, 223);
@@ -55,3 +57,26 @@ footer {
     footer a:hover {
         background-color: rgb(160, 147, 221);
     }
+
+
+/* subsites */
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 99%;
+}
+
+aside {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto auto;
+    width: 100%;
+}
+
+
+
+
+/* firmy.html */
+
+
+
