@@ -1,4 +1,4 @@
-const apiUrl = 'https://localhost:32782';
+const apiUrl = 'https://localhost:32770';
 
 document.addEventListener('DOMContentLoaded', () => {
   const firmaForm = document.getElementById('firmaForm');
@@ -48,9 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
               const firmaItem = document.createElement('div');
               firmaItem.className = 'firma-item';
               firmaItem.innerHTML = `
-                  <span>${firma.nazwa || 'N/A'} - ${firma.numer_Telefonu || 'N/A'}</span>
+                  <span>${firma.name || 'N/A'}</span>
                   <button onclick="deleteFirma(${firma.id})">Delete</button>
               `;
+                console.log(firma.name);
               firmasList.appendChild(firmaItem);
           });
       } catch (error) {
