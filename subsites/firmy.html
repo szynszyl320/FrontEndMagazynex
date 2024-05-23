@@ -9,33 +9,59 @@
 <body>
     <div class="container">
         <article>
-            <div class="AsideItem" id="AddFirma" onclick="choose(1)">
-                <p>Dodawanie Nowej Firmy</p>
+            <div class="ArticleContainer">
+                <div class="ArticleItem" onclick="choose('AddFirma')">
+                    <p>Dodawanie Nowej Firmy</p>
+                </div>
+                
+                <div class="ArticleItem" onclick="choose('ListSpecificFirma')">
+                    <p>Wyświetlenie specyficznej Fimry</p>
+                </div>
+                
+               <div class="ArticleItem" onclick="choose('ModifyFirma')">
+                    <p>Edytowanie Firm</p>
+               </div>
+    
+               <div class="ArticleItem" onclick="choose('RestoreFirma')">
+                    <p>Przywracanie Firm</p>
+               </div>
+                
+                <div class="ArticleItem" onclick="choose('DeleteFirma')">
+                    <p>Usuwanie Firm</p>
+                </div>
+                
+                <a href="../index.html" class="ArticleItem">Powrót</a>
             </div>
             
-            <div class="AsideItem" id="ListFirma" onclick="choose(2)">
-                <p>Wyświetlanie Firm</p>
-            </div>
-            
-            <div class="AsideItem" id="ListSpecificFirma" onclick="choose(3)">
-                <p>Wyświetlenie specyficznej Fimry</p>
-            </div>
-            
-           <div class="AsideItem" id="ModifyFirma" onclick="choose(4)">
-                <p>Edytowanie Firm</p>
-           </div>
+            <div id="ContainerFirma">
+                <form id="AddFirma" class="Choosables">
+                    <input type="text" id="FormNazwa" placeholder="Nazwa" required>
+                    <input type="text" id="FormNumerTelefonu" placeholder="Numer Telefonu" required>
+                    <button type="submit">Dodaj Firme</button>
+                </form>
+                
+                <form id='ListSpecificFirma' class="Choosables">
+                    <button id="SpecificFirma" type="button">Wyświetl Firme</button>
+                    
+                </form>
 
-           <div class="AsideItem" id="RestoreFirma" onclick="choose(5)">
-                <p>Przywracanie Firm</p>
-           </div>
-            
-            <div class="AsideItem" id="DeleteFimra" onclick="choose(6)">
-                <p>Usuwanie Firm</p>
+                <form id="ModifyFirma" class="Choosables">
+                    <input type="text" id="FormNazwaEdit" placeholder="Nazwa" required>
+                    <input type="text" id="FormNumerTelefonuEdit" placeholder="Numer Telefonu" required>
+                    <button type="submit">Edytuj Firme</button>
+                </form>
+
+                <form id="RestoreFirma" class="Choosables">
+                    <input type="text" id="FormNumberRestore" placeholder="Numer Firmy" required>
+                    <button type="submit">Przywróć Firme</button>
+                </form>
+
+                <form id="DeleteFirma" class="Choosables"> 
+                    <button type="submit">Usuń Firme</button>
+                </form>
             </div>
-            
-            <a href="../index.html" class="AsideItem">Powrót</a>
         </article>
-        <article id="ContainerFirma">
+        <article id="List" class="Lista">
             
         </article>
     </div>
