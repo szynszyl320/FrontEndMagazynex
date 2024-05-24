@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     FirmaFormSpecific.addEventListener('click', async () => {
-        // console.log("test");
         try {
             const response = await fetch(`${apiUrl}/firmas/${Id}`, {
                 method: 'GET'
@@ -112,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     FirmaFormRestore.addEventListener('submit', async (event) => {
         event.preventDefault()
-        const id = document.getElementById("FormNumberRestore");
+        const id = document.getElementById("FormNumberRestore").value;
 
         try {
             const response = await fetch(`${apiUrl}/firmas/${id}/restore`, {
@@ -130,11 +129,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         FirmaFormRestore.reset();
     });
-    
-    FirmaFormDelete.addEventListener('submit', async (event) => {
+
+    FirmaFormDelete.addEventListener('submit' , async (event) => {
         try {
             const response = await fetch(`${apiUrl}/firmas/${Id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -144,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Error deleting firma:', error);
         }
-        loadFirmas();
+        loadFirmas()
     });
 
 

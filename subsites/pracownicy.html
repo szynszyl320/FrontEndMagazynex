@@ -9,31 +9,59 @@
 <body>
     <div class="container">
         <article>
-            <div class="AsideItem" id="AddPracownik">
-                <p>Dodawanie Nowego Pracownika</p>
+            <div class="ArticleContainer">
+                <div class="ArticleItem" onclick="choose('AddPracownik')">
+                    <p>Dodawanie Nowego Pracownika</p>
+                </div>
+                
+                <div class="ArticleItem" onclick="choose('ListSpecificPracownik')">
+                    <p>Wyświetlenie specyficznego Pracownika</p>
+                </div>
+                
+               <div class="ArticleItem" onclick="choose('ModifyPracownik')">
+                    <p>Edytowanie Pracowników</p>
+               </div>
+            
+                <div class="ArticleItem" onclick="choose('DeletePracownik')">
+                    <p>Usuwanie Pracowników</p>
+                </div>
+                
+                <a href="../index.html" class="ArticleItem">Powrót</a>
             </div>
             
-            <div class="AsideItem" id="ListPracownik">
-                <p>Wyświetlanie Pracowników</p>
-            </div>
-            
-            <div class="AsideItem" id="ListSpecificPracownik">
-                <p>Wyświetlenie specyficznego Pracownika</p>
-            </div class="AsideItem">
-            
-            <div class="AsideItem" id="ModifyPracownik">
-                <p>Edytowanie Pracownika</p>
-            </div>
-            
-            <div class="AsideItem" id="DeletePracownik">
-                <p>Usuwanie Pracowników</p>
-            </div>
+            <div id="ContainerPracownik">
+                <form id="AddPracownik" class="Choosables">
+                    <input type="text" id="FormImie" placeholder="Imie" required>
+                    <input type="text" id="FormNazwisko" placeholder="Nazwisko" required>
+                    <input type="text" id="FormStanowisko" placeholder="Stanowisko" required>
+                    <input type="text" id="FormNumerTelefonu" placeholder="Numer Telefonu" required>
+                    <div id="Magazyn"></div>
+                    <button type="submit">Dodaj Magazyn</button>
+                </form>
+                
+                <form id='ListSpecificPracownik' class="Choosables">
+                    <button id="SpecificPracownik" type="button">Wyświetl Pracownika</button>
+                </form>
 
-            <a href="../index.html" class="AsideItem">Powrót</a>
+                <form id="ModifyPracownik" class="Choosables">
+                    <input type="text" id="FormImieEdit" placeholder="Imie" required>
+                    <input type="text" id="FormNazwiskoEdit" placeholder="Nazwisko" required>
+                    <input type="text" id="FormStanowiskoEdit" placeholder="Stanowisko" required>
+                    <input type="text" id="FormNumerTelefonuEdit" placeholder="Numer Telefonu" required>
+                    <div id="MagazynEdit"></div>
+                    <button type="submit">Edytuj Pracownika</button>
+                </form>
+
+                <form id="DeletePracownik" class="Choosables"> 
+                    <button type="submit">Usuń Pracownika</button>
+                </form>
+            </div>
         </article>
-        <article id="ContainerPracownik">
+        <article id="List" class="Lista">
             
         </article>
+    </div>
+    <script src="../scripts/pracownicy.js"></script>
     </div>
 </body>
 </html>

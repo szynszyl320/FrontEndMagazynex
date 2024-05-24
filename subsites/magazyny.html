@@ -9,36 +9,64 @@
 <body>
     <div class="container">
         <article>
-            <div class="AsideItem">
-                <label for="AddFirma">Dodawanie Nowego Magazynu</label> 
-                <input type="button" value="Add" id="AddMagazyn">
+            <div class="ArticleContainer">
+                <div class="ArticleItem" onclick="choose('AddMagazyn')">
+                    <p>Dodawanie Nowego Magazynu</p>
+                </div>
+                
+                <div class="ArticleItem" onclick="choose('ListSpecificMagazyn')">
+                    <p>Wyświetlenie specyficznego Magazynu</p>
+                </div>
+                
+               <div class="ArticleItem" onclick="choose('ModifyMagazyn')">
+                    <p>Edytowanie Magazynów</p>
+               </div>
+    
+               <div class="ArticleItem" onclick="choose('RestoreMagazyn')">
+                    <p>Przywracanie Magazynów</p>
+               </div>
+                
+                <div class="ArticleItem" onclick="choose('DeleteMagazyn')">
+                    <p>Usuwanie Magazynów</p>
+                </div>
+                
+                <a href="../index.html" class="ArticleItem">Powrót</a>
             </div>
             
-            <div class="AsideItem" id="ListMagazyn">
-                <p>Wyświetlanie Magazynów</p>    
-            </div>
-            
-            <div class="AsideItem" id="ListSpecificMagazyn">
-                <p>Wyświetlenie specyficznego Magazynu</p>
-            </div>
+            <div id="ContainerMagazyn">
+                <form id="AddMagazyn" class="Choosables">
+                    <input type="text" id="FormNazwa" placeholder="Nazwa" required>
+                    <input type="text" id="FormLokalizacja" placeholder="Lokalizacja" required>
+                    <input type="text" id="FormKlasa" placeholder="Klasa Towarów Niebezpiecznych" required>
+                    <button type="submit">Dodaj Magazyn</button>
+                </form>
+                
+                <form id='ListSpecificMagazyn' class="Choosables">
+                    <button id="SpecificMagazyn" type="button">Wyświetl Magazyn</button>
+                </form>
 
-            <div class="AsideItem" id="ModifyMagazyn">
-                <div>Edytowanie Magazynów</div>
-            </div>
-            
-            <div class="AsideItem" id="RestoreMagazyn">
-                <p>Przywracanie Magazynów</p>
-            </div>
+                <form id="ModifyMagazyn" class="Choosables">
+                    <input type="text" id="FormNazwaEdit" placeholder="Nazwa" required>
+                    <input type="text" id="FormLokalizacjaEdit" placeholder="Lokalizacja" required>
+                    <input type="text" id="FormKlasaEdit" placeholder="Klasa Towarów Niebezpiecznych" required>
+                    <button type="submit">Edytuj Magazyn</button>
+                </form>
 
-            <div class="AsideItem" id="DeleteMagazyn">
-                <p>Usuwanie Magazynów</p>
+                <form id="RestoreMagazyn" class="Choosables">
+                    <input type="text" id="FormNumberRestore" placeholder="Numer Magazynu" required>
+                    <button type="submit">Przywróć Magazyn</button>
+                </form>
+
+                <form id="DeleteMagazyn" class="Choosables"> 
+                    <button type="submit">Usuń Magazyn</button>
+                </form>
             </div>
-           
-            <a href="../index.html" class="AsideItem">Powrót</a>
         </article>
-        <article id="ContainerMagazyn">
+        <article id="List" class="Lista">
             
         </article>
+    </div>
+    <script src="../scripts/magazyny.js"></script>
     </div>
 </body>
 </html>

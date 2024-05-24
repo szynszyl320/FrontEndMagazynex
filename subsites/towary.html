@@ -9,31 +9,61 @@
 <body>
     <div class="container">
         <article>
-            <div class="AsideItem" id="AddTowar">
-                <p>Dodawanie Nowego Towaru</p>
-            </div>
-        
-            <div class="AsideItem" id="ListTowar">
-                <p>Wyświetlanie Towaru</p>
+            <div class="ArticleContainer">
+                <div class="ArticleItem" onclick="choose('AddTowar')">
+                    <p>Dodawanie Nowego Towaru</p>
+                </div>
+                
+                <div class="ArticleItem" onclick="choose('ListSpecificTowar')">
+                    <p>Wyświetlenie specyficznego Towaru</p>
+                </div>
+                
+               <div class="ArticleItem" onclick="choose('ModifyTowar')">
+                    <p>Edytowanie Towarów</p>
+               </div>
+            
+                <div class="ArticleItem" onclick="choose('DeleteTowar')">
+                    <p>Usuwanie Towaru</p>
+                </div>
+                
+                <a href="../index.html" class="ArticleItem">Powrót</a>
             </div>
             
-            <div class="AsideItem" id="ListSpecificTowar">
-                <p>Wyświetlenie specyficznego Towaru</p>
-            </div>
+            <div id="ContainerTowar">
+                <form id="AddTowar" class="Choosables">
+                    <input type="text" id="FormNazwa" placeholder="Nazwa" required>
+                    <input type="text" id="FormOpis" placeholder="Opis Produktu" required>
+                    <input type="text" id="FormCena" placeholder="Cena netto za sztuke" required>
+                    <input type="text" id="FormIlosc" placeholder="Ilosc" required>
+                    <input type="text" id="FormKlasa" placeholder="Klasa Towarów Niezbezpiecznych" required>
+                    <div id="Magazyn/Firma"></div>
+                    <button type="submit">Dodaj Towar</button>
+                </form>
+                
+                <form id='ListSpecificTowar' class="Choosables">
+                    <button id="SpecificTowar" type="button">Wyświetl Towar</button>
+                </form>
 
-            <div class="AsideItem" id="ModifyTowar">
-                <p>Edytowanie Pracownika</p>
+                <form id="ModifyTowar" class="Choosables">
+                    <input type="text" id="FormNazwaEdit" placeholder="Nazwa" required>
+                    <input type="text" id="FormOpisEdit" placeholder="Opis Produktu" required>
+                    <input type="text" id="FormCenaEdit" placeholder="Cena netto za sztuke" required>
+                    <input type="text" id="FormIloscEdit" placeholder="Ilosc" required>
+                    <input type="text" id="FormKlasaEdit" placeholder="Klasa Towarów Niezbezpiecznych" required>
+                    <div id="Magazyn/Firma"></div>
+                    <button type="submit">Edytuj Towar</button>
+                </form>
+                
+                <form id="DeleteTowar" class="Choosables"> 
+                    <button type="submit">Usuń Towar</button>
+                </form>
             </div>
-            
-            <div class="AsideItem" id="DeleteTowar">
-                <p>Usuwanie Towarów</p>
-            </div>
-            
-            <a href="../index.html" class="AsideItem">Powrót</a>
         </article>
-        <article id="ContainerTowaru">
+        <article id="List" class="Lista">
             
         </article>
+    </div>
+    <script src="../scripts/towary.js"></script>
     </div>
 </body>
 </html>
