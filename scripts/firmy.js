@@ -1,7 +1,14 @@
 const apiUrl = 'https://localhost:32770';
 
 var Id = 0;    
-function chooseFirma(value) {
+
+function Selected(value) {
+    const selects = document.querySelectorAll(".ListaItemAlt");
+    selects.forEach(item => {
+        item.className = "ListaItem"
+    });
+    const SelectionObject = document.getElementById(value);
+    SelectionObject.className = "ListaItemAlt"
     Id = value;
 }
 
@@ -164,7 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
             firmas.forEach(firma => {
                 const firmaItem = document.createElement('div');
                 firmaItem.className = 'ListaItem';
-                firmaItem.setAttribute("onclick", `chooseFirma(${firma.id})`)
+                firmaItem.setAttribute("onclick", `Selected(${firma.id})`);
+                firmaItem.id = firma.id;
                 firmaItem.innerHTML = `
                     <span>${firma.name || 'N/A'}</span>
                 `;

@@ -108,7 +108,7 @@ article {
     transition: left 0.3s ease-in-out;
 }
 
-#ContainerFirma {
+.BOX {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -123,8 +123,14 @@ article {
         border: 1px solid black;
         margin: 1px;
         background-color: lightgrey;
-    }   
+    }      
     .ListaItem:hover {
-        background-color: grey;
+        background-color: gray;
         cursor: pointer;
     }
+    .ListaItemAlt {
+        border: 1px solid black;
+        margin: 1px;
+        background-color: rgb(94, 192, 192);
+    }
+ 
