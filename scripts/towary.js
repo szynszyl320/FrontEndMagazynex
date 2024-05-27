@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             const response = await fetch(`${apiUrl}/towars/${Id}`, {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
