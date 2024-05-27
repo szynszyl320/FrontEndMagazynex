@@ -14,12 +14,12 @@ function Selected(value) {
 }
 
 function SelectedMagazyn(value) {
-    const selects = document.querySelectorAll(".ListaItemAlt");
+    const selects = document.querySelectorAll(".ListaItemAltMagazyn");
     selects.forEach(item => {
         item.className = "ListaItem"
     });
     const SelectionObject = document.getElementById(value);
-    SelectionObject.className = "ListaItemAlt"
+    SelectionObject.className = "ListaItemAltMagazyn"
     Id_magazyn = value;
 }
 
@@ -40,148 +40,138 @@ function choose(value) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const PracownikList = document.getElementById('List');
-//     const PracownikFormAdd = document.getElementById('AddPracownik');
-//     const PracownikFormEdit = document.getElementById('ModifyPracownik');
-//     const PracownikFormRestore = document.getElementById('RestorePracownik');
-//     const PracownikFormSpecific = document.getElementById("SpecificPracownik");
-//     const PracownikFormDelete = document.getElementById("DeletePracownik");
+    const PracownikFormAdd = document.getElementById('AddPracownik');
+    const PracownikFormEdit = document.getElementById('ModifyPracownik');
+    const PracownikFormSpecific = document.getElementById("SpecificPracownik");
+    const PracownikFormDelete = document.getElementById("DeletePracownik");
+
+    const DisplayMagazynAdd = document.getElementById('AddPracownikForm');
+    const DisplayMagazynModify = document.getElementById('ModifyPracownikForm')
+
+    DisplayMagazynAdd.addEventListener('click', (event) => {
+        loadMagazyns()
+    })
+
+    DisplayMagazynModify.addEventListener('click', (event) => {
+        loadMagazyns()
+    });
 
 
-//     MagazynFormAdd.addEventListener('submit', async (event) => {
-//         event.preventDefault();
+    PracownikFormAdd.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const Imie = document.getElementById('FormImie').value;
+        const Nazwisko = document.getElementById('FormNazwisko').value;
+        const Stanowisko = document.getElementById('FormStanowisko').value;
+        const Numer_Telefonu = document.getElementById('FormNumerTelefonu').value;
+        const Id_Magazynu = Id_magazyn;
+
+        const newPracownik = {
+           Imie,
+           Nazwisko,
+           Stanowisko,
+           Numer_Telefonu,
+           Id_Magazynu
+        };
         
-//         const nazwa = document.getElementById('FormNazwa').value;
-//         const lokalizacja = document.getElementById('FormLokalizacja').value;
-//         const przechowywane_Materialy_string = (document.getElementById('FormKlasa').value).split(",");
-//         let przechowywane_Materialy = []
-//         przechowywane_Materialy_string.forEach(parameter => {
-//             przechowywane_Materialy.push(parseInt(parameter));
-//         });
+        try {
+            const response = await fetch(`${apiUrl}/pracowniks`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newPracownik)
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            loadPracowniks();
+        } catch (error) {
+            console.error('Error adding pracownik:', error);
+        }
 
-//         const newMagazyn = {
-//             lokalizacja,
-//             przechowywane_Materialy,
-//             nazwa
-//         };
-        
-//         try {
-//             const response = await fetch(`${apiUrl}/magazyns`, {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify(newMagazyn)
-//             });
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             loadMagazyns();
-//         } catch (error) {
-//             console.error('Error adding magazyn:', error);
-//         }
+        PracownikFormAdd.reset();
+    });
 
-//         MagazynFormAdd.reset();
-//     });
-
-//     MagazynFormSpecific.addEventListener('click', async () => {
-//         try {
-//             const response = await fetch(`${apiUrl}/magazyns/${Id}`, {
-//                 method: 'GET'
-//             });
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             const magazyn = await response.json();
-
-//             alert(`Nazwa magazynu: ${magazyn.nazwa}`);
-//             const Towary = []
-//             magazyn.towaries.forEach(towar => {
-//                 Towary.push(towar.name);
-//             })
-//             alert(Towary)
-//             const Pracownicy = []
-//             magazyn.pracowniks.forEach(pracownik => {
-//                 Pracownicy.push(pracownik.imie)
-//             })
-//             alert(Pracownicy)
-//         } catch (error) {
-//             console.error('Error loading Magazyn:', error);
-//         }
-//         MagazynFormSpecific.reset();
-//     })
+    PracownikFormSpecific.addEventListener('click', async () => {
+        try {
+            const response = await fetch(`${apiUrl}/pracowniks/${Id}`, {
+                method: 'GET'
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const pracownik = await response.json();
+            console.log(pracownik.MagazynId);
+            try {
+                const response = await fetch(`${apiUrl}/magazyns/${pracownik.magazynId}`, {
+                    method: 'GET'
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                var magazyn = await response.json();
+            }
+            catch (error) {
+                console.error('Error loading Magazyn', error);
+            }
+            alert(`Imie pracownika: ${pracownik.imie} \nNazwisko pracownika: ${pracownik.nazwisko} 
+            \nMiejsce pracy: ${magazyn.nazwa}`);
+        } catch (error) {
+            console.error('Error loading Pracownik:', error);
+        }
+    })
     
-//     MagazynFormEdit.addEventListener('submit', async (event) => {
-//         event.preventDefault();
-//         const nazwa = document.getElementById('FormNazwaEdit').value;
-//         const lokalizacja = document.getElementById('FormLokalizacjaEdit').value;
-//         const przechowywane_Materialy_string = (document.getElementById('FormKlasaEdit').value).split(",");
-//         let przechowywane_Materialy = []
-//         przechowywane_Materialy_string.forEach(parameter => {
-//             przechowywane_Materialy.push(parseInt(parameter));
-//         });
+    PracownikFormEdit.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const Imie = document.getElementById("FormImieEdit").value;
+        const Nazwisko = document.getElementById("FormNazwiskoEdit").value;
+        const Stanowisko = document.getElementById("FormStanowiskoEdit").value;
+        const Numer_Telefonu = document.getElementById("FormNumerTelefonuEdit").value;
+        const Id_Magazynu = Id_magazyn;
 
-//         const EditMagazyn = {
-//             lokalizacja,
-//             przechowywane_Materialy,
-//             nazwa
-//         };
+        const EditPracownik = {
+            Imie,
+            Nazwisko,
+            Stanowisko,
+            Numer_Telefonu,
+            Id_Magazynu
+        };
         
-//         try {
-//             const response = await fetch(`${apiUrl}/magazyns/${Id}`, {
-//                 method: 'PUT',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify(EditMagazyn)
-//             });
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             loadMagazyns();
-//         } catch (error) {
-//             console.error('Error Editing Magazyn:', error);
-//         }
-//         MagazynFormEdit.reset();
-//     });
+        try {
+            const response = await fetch(`${apiUrl}/pracowniks/${Id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(EditPracownik)
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            loadPracowniks();
+        } catch (error) {
+            console.error('Error Editing Pracownik:', error);
+        }
+        PracownikFormEdit.reset();
+    });
 
-//     MagazynFormRestore.addEventListener('submit', async (event) => {
-//         event.preventDefault()
-//         const id = document.getElementById("FormNumberRestore").value;
-
-//         try {
-//             const response = await fetch(`${apiUrl}/magazyns/${id}/restore`, {
-//                 method: 'PUT',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//             });
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             loadFirmas();
-//         } catch (error) {
-//             console.error('Error Restoring magazyn:', error);
-//         }
-//         MagazynFormRestore.reset();
-//     });
-
-//     MagazynFormDelete.addEventListener('submit' , async (event) => {
-//         try {
-//             const response = await fetch(`${apiUrl}/magazyns/${Id}`, {
-//                 method: 'DELETE',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 }
-//             });
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             alert(`Numer Usuwanego Magazynu: ${Id}. Zapisz go w razie potrzeby przywrócenia magazynu.`);
-//             loadMagazyns();
-//         } catch (error) {
-//             console.error('Error deleting magazyn:', error);
-//         }
-//     });
+    PracownikFormDelete.addEventListener('submit' , async (event) => {
+        try {
+            const response = await fetch(`${apiUrl}/pracowniks/${Id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            loadPracowniks();
+        } catch (error) {
+            console.error('Error deleting pracownik:', error);
+        }
+    });
 
 
     async function loadPracowniks() {

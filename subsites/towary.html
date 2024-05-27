@@ -10,7 +10,7 @@
     <div class="container">
         <article>
             <div class="ArticleContainer">
-                <div class="ArticleItem" onclick="choose('AddTowar')">
+                <div class="ArticleItem" onclick="choose('AddTowar')" id="AddTowarForm">
                     <p>Dodawanie Nowego Towaru</p>
                 </div>
                 
@@ -18,7 +18,7 @@
                     <p>Wyświetlenie specyficznego Towaru</p>
                 </div>
                 
-               <div class="ArticleItem" onclick="choose('ModifyTowar')">
+               <div class="ArticleItem" onclick="choose('ModifyTowar')" id="ModifyTowarForm">
                     <p>Edytowanie Towarów</p>
                </div>
             
@@ -48,7 +48,7 @@
                     <input type="text" id="FormNazwaEdit" placeholder="Nazwa" required>
                     <input type="text" id="FormOpisEdit" placeholder="Opis Produktu" required>
                     <input type="text" id="FormCenaEdit" placeholder="Cena netto za sztuke" required>
-                    <input type="text" id="FormIloscEdit" placeholder="Ilosc" required>
+                    <input type="text" id="FormIloscEdit" placeholder="Ilość" required>
                     <input type="text" id="FormKlasaEdit" placeholder="Klasa Towarów Niezbezpiecznych" required>
                     <div id="Magazyn/Firma"></div>
                     <button type="submit">Edytuj Towar</button>
@@ -59,7 +59,7 @@
                 </form>
             </div>
         </article>
-        <article id="List" class="Lista">
+        <article id="List">
             
         </article>
     </div>

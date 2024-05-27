@@ -10,7 +10,7 @@
     <div class="container">
         <article>
             <div class="ArticleContainer">
-                <div class="ArticleItem" onclick="choose('AddPracownik')">
+                <div class="ArticleItem" onclick="choose('AddPracownik')" id="AddPracownikForm">
                     <p>Dodawanie Nowego Pracownika</p>
                 </div>
                 
@@ -18,7 +18,7 @@
                     <p>Wyświetlenie specyficznego Pracownika</p>
                 </div>
                 
-               <div class="ArticleItem" onclick="choose('ModifyPracownik')">
+               <div class="ArticleItem" onclick="choose('ModifyPracownik')" id="ModifyPracownikForm">
                     <p>Edytowanie Pracowników</p>
                </div>
             
@@ -35,7 +35,6 @@
                     <input type="text" id="FormNazwisko" placeholder="Nazwisko" required>
                     <input type="text" id="FormStanowisko" placeholder="Stanowisko" required>
                     <input type="text" id="FormNumerTelefonu" placeholder="Numer Telefonu" required>
-                    <div id="Magazyn"></div>
                     <button type="submit">Dodaj Magazyn</button>
                 </form>
                 
@@ -48,7 +47,6 @@
                     <input type="text" id="FormNazwiskoEdit" placeholder="Nazwisko" required>
                     <input type="text" id="FormStanowiskoEdit" placeholder="Stanowisko" required>
                     <input type="text" id="FormNumerTelefonuEdit" placeholder="Numer Telefonu" required>
-                    <div id="MagazynEdit"></div>
                     <button type="submit">Edytuj Pracownika</button>
                 </form>
 
@@ -57,7 +55,7 @@
                 </form>
             </div>
         </article>
-        <article id="List" class="Lista">
+        <article id="List">
             
         </article>
     </div>

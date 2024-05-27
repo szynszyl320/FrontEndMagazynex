@@ -133,4 +133,14 @@ article {
         margin: 1px;
         background-color: rgb(94, 192, 192);
     }
- 
+    .ListaItemAltFirma {
+        border: 1px solid black;
+        margin: 1px;
+        background-color: rgb(94, 192, 192);
+    }
+    .ListaItemAltMagazyn {
+        border: 1px solid black;
+        margin: 1px;
+        background-color: rgb(94, 192, 192);
+    }
+
