@@ -25,7 +25,15 @@
                 <div class="ArticleItem" onclick="choose('DeleteTowar')">
                     <p>Usuwanie Towaru</p>
                 </div>
+
+                <div class="ArticleItem" onclick="choose('ExportTowar')">
+                    <p>Eskportowanie Towaru</p>
+                </div>
                 
+                <div class="ArticleItem" onclick="choose('ImportTowar')">
+                    <p>Importowanie Firm</p>
+                </div>
+
                 <a href="../index.html" class="ArticleItem">Powrót</a>
             </div>
             
@@ -57,6 +65,15 @@
                 <form id="DeleteTowar" class="Choosables"> 
                     <button type="submit">Usuń Towar</button>
                 </form>
+                       
+                <a href="https://localhost:32770/towars/CSV" class="Choosables" id="ExportTowar">
+                    <button>Eksportuj Towary</button>
+                </a>
+            
+                <div class="Choosables" id="ImportTowar">
+                    <input type="file" id="file">
+                    <button id="ImportSubmit">Importowanie Towarów</button>
+                </div>  
             </div>
         </article>
         <article id="List">

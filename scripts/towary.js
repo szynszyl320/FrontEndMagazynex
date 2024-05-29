@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const TowarFormModify = document.getElementById('ModifyTowar');
     const TowarFormSpecific = document.getElementById("SpecificTowar");
     const TowarFormDelete = document.getElementById("DeleteTowar");
+    const TowarFormImport = document.getElementById("ImportSubmit");
 
     const DisplayMagazynFirmaAdd = document.getElementById('AddTowarForm');
     const DisplayMagazynFirmaModify = document.getElementById('ModifyTowarForm')
@@ -106,6 +107,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         TowarFormAdd.reset();
+    });
+
+    TowarFormImport.addEventListener('click', async (event) => {
+        let fileInput = document.getElementById("file");
+        let file = fileInput.files[0]; 
+        console.log(file);
+        if (file.type !== 'application/vnd.ms-excel') {
+            console.log('Please select a CSV file.');
+            return;
+        }
+    
+        const formData = new FormData();
+        formData.append('file', file);
+    
+        try {
+            const response = await fetch(`${apiUrl}/towars/import`, {
+                method: 'POST',
+                body: formData
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const Duplikaty = await response.json();
+            alert(`Ilość duplikatów w tabeli: ${Duplikaty}`)
+        } catch (error) {
+            console.log("Error loading Firma", error);
+        }
     });
 
     TowarFormSpecific.addEventListener('click', async () => {

@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const PracownikFormEdit = document.getElementById('ModifyPracownik');
     const PracownikFormSpecific = document.getElementById("SpecificPracownik");
     const PracownikFormDelete = document.getElementById("DeletePracownik");
+    const PracownikFormImport = document.getElementById("ImportSubmit");
 
     const DisplayMagazynAdd = document.getElementById('AddPracownikForm');
     const DisplayMagazynModify = document.getElementById('ModifyPracownikForm')
@@ -91,6 +92,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         PracownikFormAdd.reset();
+    });
+
+    PracownikFormImport.addEventListener('click', async (event) => {
+        let fileInput = document.getElementById("file");
+        let file = fileInput.files[0]; 
+        console.log(file);
+        if (file.type !== 'application/vnd.ms-excel') {
+            console.log('Please select a CSV file.');
+            return;
+        }
+    
+        const formData = new FormData();
+        formData.append('file', file);
+    
+        try {
+            const response = await fetch(`${apiUrl}/pracowniks/import`, {
+                method: 'POST',
+                body: formData
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const Duplikaty = await response.json();
+            alert(`Ilość duplikatów w tabeli: ${Duplikaty}`)
+        } catch (error) {
+            console.log("Error loading Firma", error);
+        }
     });
 
     PracownikFormSpecific.addEventListener('click', async () => {

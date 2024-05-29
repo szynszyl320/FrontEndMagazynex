@@ -1,6 +1,7 @@
 const apiUrl = 'https://localhost:32770';
 
 var Id = 0;    
+var path = document.getElementById("file");
 
 function Selected(value) {
     const selects = document.querySelectorAll(".ListaItemAlt");
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const FirmaFormRestore = document.getElementById('RestoreFirma');
     const FirmaFormSpecific = document.getElementById("SpecificFirma");
     const FirmaFormDelete = document.getElementById("DeleteFirma");
-
+    const FirmaFormImport = document.getElementById("ImportSubmit");
 
     firmaFormAdd.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -63,6 +64,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         firmaFormAdd.reset();
     });
+
+    FirmaFormImport.addEventListener('click', async (event) => {
+        let fileInput = document.getElementById("file");
+        let file = fileInput.files[0]; 
+        console.log(file);
+        if (file.type !== 'application/vnd.ms-excel') {
+            console.log('Please select a CSV file.');
+            return;
+        }
+    
+        const formData = new FormData();
+        formData.append('file', file);
+    
+        try {
+            const response = await fetch(`${apiUrl}/firmas/import`, {
+                method: 'POST',
+                body: formData
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const Duplikaty = await response.json();
+            alert(`Ilość duplikatów w tabeli: ${Duplikaty}`)
+        } catch (error) {
+            console.log("Error loading Firma", error);
+        }
+    });
+    
 
     FirmaFormSpecific.addEventListener('click', async () => {
         try {
@@ -146,12 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 }
             });
-            // const {data} = await axios.delete(`${apiUrl}/firmas`, {
-            //     headers: {
-            //       'Content-Type': 'application/json'
-            //     }
-            // });
-
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

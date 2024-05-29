@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const MagazynFormRestore = document.getElementById('RestoreMagazyn');
     const MagazynFormSpecific = document.getElementById("SpecificMagazyn");
     const MagazynFormDelete = document.getElementById("DeleteMagazyn");
-
+    const MagazynFormImport = document.getElementById("ImportSubmit");
 
     MagazynFormAdd.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -72,6 +72,34 @@ document.addEventListener('DOMContentLoaded', () => {
         MagazynFormAdd.reset();
     });
 
+    MagazynFormImport.addEventListener('click', async (event) => {
+        let fileInput = document.getElementById("file");
+        let file = fileInput.files[0]; 
+        console.log(file);
+        if (file.type !== 'application/vnd.ms-excel') {
+            console.log('Please select a CSV file.');
+            return;
+        }
+    
+        const formData = new FormData();
+        formData.append('file', file);
+    
+        try {
+            const response = await fetch(`${apiUrl}/magazyns/import`, {
+                method: 'POST',
+                body: formData
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const Duplikaty = await response.json();
+            alert(`Ilość duplikatów w tabeli: ${Duplikaty}`)
+        } catch (error) {
+            console.log("Error loading Firma", error);
+        }
+    });
+    
     MagazynFormSpecific.addEventListener('click', async () => {
         try {
             const response = await fetch(`${apiUrl}/magazyns/${Id}`, {

@@ -107,6 +107,7 @@ article {
     grid-row: 1;
     transition: left 0.3s ease-in-out;
 }
+    
 
 .BOX {
     display: grid;
@@ -144,3 +145,12 @@ article {
         background-color: rgb(94, 192, 192);
     }
 
+    input[type=file] {
+        width: 98%;
+        max-width: 100%;
+        color: #444;
+        padding: 5px;
+        background: #fff;
+        border: 1px solid #555;
+      }
+      

@@ -30,6 +30,14 @@
                     <p>Usuwanie Magazynów</p>
                 </div>
                 
+                <div class="ArticleItem" onclick="choose('ExportMagazyn')">
+                    <p>Eksportowanie Magazynów</p>
+                </div>
+
+                <div class="ArticleItem" onclick="choose('ImportMagazyn')">
+                    <p>Importowanie Magazynów</p>
+                </div>
+
                 <a href="../index.html" class="ArticleItem">Powrót</a>
             </div>
             
@@ -60,6 +68,15 @@
                 <form id="DeleteMagazyn" class="Choosables"> 
                     <button type="submit">Usuń Magazyn</button>
                 </form>
+                
+                <a href="https://localhost:32770/magazyns/CSV" class="Choosables" id="ExportMagazyn">
+                    <button>Eksportuj magazyny</button>
+                </a>
+            
+                <div class="Choosables" id="ImportMagazyn">
+                    <input type="file" id="file">
+                    <button id="ImportSubmit">Importowanie Magazynów</button>
+                </div>  
             </div>
         </article>
         <article id="List">

@@ -26,6 +26,14 @@
                     <p>Usuwanie Pracowników</p>
                 </div>
                 
+                <div class="ArticleItem" onclick="choose('ExportPracownik')">
+                    <p>Eksportowanie Pracowników</p>
+                </div>
+
+                <div class="ArticleItem" onclick="choose('ImportPracownik')">
+                    <p>Importowanie Pracowników</p>
+                </div>
+
                 <a href="../index.html" class="ArticleItem">Powrót</a>
             </div>
             
@@ -53,6 +61,15 @@
                 <form id="DeletePracownik" class="Choosables"> 
                     <button type="submit">Usuń Pracownika</button>
                 </form>
+
+                <a href="https://localhost:32770/pracowniks/CSV" class="Choosables" id="ExportPracownik">
+                    <button>Eksportuj pracowników</button>
+                </a>
+
+                <div class="Choosables" id="ImportPracownik">
+                    <input type="file" id="file">
+                    <button id="ImportSubmit">Importowanie Pracowników</button>
+                </div>  
             </div>
         </article>
         <article id="List">
